@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pushti Gandhi | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Serif & Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serifHeader: ['Cinzel', 'Merriweather', 'serif'],
+                        serifBody: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        darkBg: '#08080a',
+                        cardBg: '#13131a',
+                        purpleAccent: '#a855f7',
+                        careDarkBg: '#0b171f',
+                        careCardBg: '#132832',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0d0f17;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .hero-bg {
+            background-color: #0d0f17;
+        }
+
+        .title-typography {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* Figma inner container frame style */
+        .figma-frame {
+            background-color: #0f0f14;
+            border: 1px solid #1f1f2a;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.02);
+            border-radius: 28px;
+        }
+
+        /* Figma dashed badge button for name */
+        .dashed-name-badge {
+            border: 2px dashed #8b5cf6;
+            background: rgba(139, 92, 246, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .dashed-name-badge:hover {
+            background: rgba(139, 92, 246, 0.15);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Portfolio Card Styling */
+        .portfolio-card {
+            perspective: 1000px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        .card-badge {
+            background: rgba(20, 20, 25, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .bg-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Dark Theme Case Study Shared View Styles */
+        .case-study-view {
+            background-color: #0b171f;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .care-serif-title {
+            font-family: 'Cinzel', 'Merriweather', Georgia, serif;
+            letter-spacing: 0.12em;
+        }
+
+        .care-body-text {
+            font-family: 'Merriweather', Georgia, serif;
+            line-height: 1.85;
+        }
+
+        .mindmap-node {
+            background-color: #ffffff;
+            color: #0d1d25;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.8);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .mindmap-node:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 25px rgba(0,212,255,0.3);
+        }
+
+        /* Interactive Toggle Switch Component */
+        .toggle-switch-bg {
+            background-color: #273542;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+            width: 68px;
+            height: 34px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .toggle-switch-circle {
+            background-color: #ffffff;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            position: absolute;
+            top: 3px;
+            left: 4px;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+
+        /* Active Switch State (ON) */
+        .toggle-switch-bg.active {
+            background-color: #38bdf8;
+            border-color: #7dd3fc;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5), inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .toggle-switch-bg.active .toggle-switch-circle {
+            transform: translateX(34px);
+        }
+
+        /* Key Learnings List Collapsible Animation */
+        .key-learnings-list {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-8px);
+            overflow: hidden;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .key-learnings-list.show {
+            max-height: 380px;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .modal-overlay {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        /* Software Viewport Screen Frame */
+        .viewport-screen-frame {
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            background-color: #0d1217;
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Home View Container -->
+    <div id="homeView" class="w-full flex flex-col items-center justify-center py-8 sm:py-12 min-h-screen">
+        <!-- Main Showcase Container Frame (Figma Layout) -->
+        <main class="w-full max-w-6xl figma-frame p-6 sm:p-10 md:p-14 flex flex-col items-center justify-center z-10 my-auto min-h-[750px] relative">
+            
+            <!-- Cards Showcase Grid -->
+            <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center justify-center mb-12 max-w-5xl">
+                
+                <!-- CARD 1: IXD FUNDAMENTALS (Care Connect trigger) -->
+                <div 
+                    onclick="showCareConnectView()" 
+                    class="portfolio-card relative h-[380px] sm:h-[420px] w-full overflow-hidden rounded-[2rem] group shadow-2xl cursor-pointer"
+                >
+                    <!-- YOUR POSTER IMAGE -->
+                    <img 
+                        src="IXD FUNDAMENTAL CARD POSTER.png"
+                        alt="IXD Fundamentals - Care Connect"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    >
+
+                    <!-- DARK GRADIENT OVER IMAGE -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none"></div>
+
+                    <!-- SLIGHT DARK OVERLAY -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
+
+                    <!-- PROJECT BADGE -->
+                    <div class="absolute bottom-5 right-5 z-10">
+                        <span class="card-badge px-4 py-2 uppercase tracking-wider">
+                            IXD FUNDAMENTALS
+                        </span>
+                    </div>
+                </div>
+
+                <!-- EMBODIMENT DESIGN -->
+                <div 
+                    onclick="showEmbodimentView()" 
+                    class="portfolio-card relative h-[380px] sm:h-[420px] w-full overflow-hidden rounded-[2rem] group shadow-2xl cursor-pointer"
+                >
+                    <img 
+                        src="Embodiment Design.png"
+                        alt="Embodiment Design"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none"></div>
+
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
+
+                    <div class="absolute bottom-5 right-5 z-10">
+                        <span class="card-badge px-4 py-2 uppercase tracking-wider">
+                            EMBODIMENT DESIGN
+                        </span>
+                    </div>
+                </div>
+
+                <!-- VIRTUAL REALITY -->
+                <div 
+                    onclick="showVrView()" 
+                    class="portfolio-card relative h-[380px] sm:h-[420px] w-full overflow-hidden rounded-[2rem] group shadow-2xl cursor-pointer"
+                >
+                    <img 
+                        src="VR Poster.png"
+                        alt="Virtual Reality"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none"></div>
+
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
+
+                    <div class="absolute bottom-5 right-5 z-10">
+                        <span class="card-badge px-4 py-2 uppercase tracking-wider">
+                            VIRTUAL REALITY
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Center Title & Name Pill -->
+            <div class="w-full flex flex-col items-center justify-center text-center mt-2 z-10">
+                <h1 class="title-typography w-full text-center text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-[0.25em] sm:tracking-[0.35em] select-none drop-shadow-md">
+                    PORTFOLIO
+                </h1>
+
+                <!-- Dashed Name Badge Pill - Triggers About Page -->
+                <button onclick="openAboutPage()" class="dashed-name-badge mt-6 px-6 py-2.5 rounded-xl flex items-center justify-center cursor-pointer group" title="About Pushti Gandhi">
+                    <span class="text-sm sm:text-base font-semibold text-cyan-200 group-hover:text-white transition-colors">
+                        Pushti Gandhi
+                    </span>
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+
+    <!-- ================= CARE CONNECT FULL CASE STUDY VIEW ================= -->
+    <div id="careConnectView" class="hidden case-study-view w-full min-h-screen pb-20">
+        
+        <!-- Header -->
+        <header class="w-full max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
+            <button onclick="showHomeView()" class="text-gray-300 hover:text-white text-2xl p-2 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2 group" title="Return to Portfolio">
+                <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+            </button>
+
+            <h1 class="care-serif-title text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-widest text-center">
+                CARE CONNECT
+            </h1>
+
+            <div class="w-10"></div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <!-- TOP SECTION: Graphic + Key Learnings -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-4">
+                
+                <div class="flex justify-center md:justify-start">
+                    <div onclick="openCareConnectLink()" class="w-full max-w-[340px] aspect-square bg-white rounded-3xl p-8 flex flex-col items-center justify-center shadow-2xl relative overflow-hidden group cursor-pointer hover:scale-[1.03] transition-all duration-300 ring-4 ring-transparent hover:ring-cyan-400/60" title="Click to open Care Connect Website">
+                        
+                        <!-- Click Hint Badge (Top Right) -->
+                        <div class="absolute top-3 right-3 bg-cyan-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5 opacity-90 group-hover:opacity-100 group-hover:bg-cyan-500 transition-all">
+                            <span>Click to Open Site</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </div>
+
+                        <img 
+                            src="care connect logo.jpeg"
+                            alt="IXD Fundamentals - Care Connect"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        >
+
+                        
+
+                        <!-- Bottom Click Notification Banner -->
+                        <div class="absolute bottom-2 inset-x-4 z-10 bg-slate-900/10 group-hover:bg-cyan-950/80 group-hover:text-cyan-200 text-slate-600 text-[10px] font-semibold py-1 rounded-lg text-center transition-all duration-300 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-hand-pointer text-[10px] animate-bounce"></i>
+                            <span>Click image to visit live prototype site</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- KEY LEARNINGS TOGGLE SECTION -->
+                <div class="flex flex-col justify-center space-y-6 text-cyan-50">
+                    <div class="flex items-center justify-between gap-4">
+                        <h2 class="text-xl sm:text-2xl font-bold tracking-[0.25em] text-cyan-200/90 font-mono select-none">
+                            KEY LEARNINGS
+                        </h2>
+
+                        <div id="careToggle" onclick="toggleKeyLearnings('careToggle', 'careKeyLearningsList')" class="toggle-switch-bg group relative flex-shrink-0" title="Click to toggle Key Learnings">
+                            <div class="toggle-switch-circle"></div>
+                        </div>
+                    </div>
+
+                    <ul id="careKeyLearningsList" class="key-learnings-list space-y-6">
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-lg sm:text-xl tracking-wider text-white">
+                                PROBLEM IDENTIFICATION
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-lg sm:text-xl tracking-wider text-white">
+                                ANALYSING WITH VARIOUS PERSPECTIVES
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-lg sm:text-xl tracking-wider text-white">
+                                UNDERSTANDING USER FLOW
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- Text Description -->
+            <section class="care-body-text text-center space-y-6 max-w-3xl mx-auto pt-6 text-slate-200 text-sm sm:text-base leading-relaxed px-2">
+                <p>
+                    Care connect is a digital platform that connects seniors with verified local assistants for daily lifestyle, companionship and medical support, while their adult children can coordinate remotely.
+                </p>
+
+                <p class="font-bold text-white tracking-wide">
+                    The key offerings are: <span class="uppercase text-cyan-300">COMPANIONSHIP, TECH ASSISTANCE, HOME SUPPORT AND MEDICAL CARE.</span>
+                </p>
+
+                <p class="text-slate-300">
+                    The important highlights of this platform are Vetted caregivers, Flexible bookings, Safety and SOS and secured payments. The target audience is the end users- aged citizens above 65years of age, the primary decision makers who are their adult children who coordinate remotely and who require transparency for their parents.
+                </p>
+            </section>
+
+            <!-- Mindmap Diagram -->
+            <section class="pt-10 flex flex-col items-center">
+    <div class="w-full max-w-3xl my-4 flex justify-center">
+        <img 
+            src="Chart .png" 
+            alt="Mindmap Diagram" 
+            class="w-full h-auto max-w-2xl rounded-xl shadow-xl border border-gray-700/50 object-contain"
+        />
+    </div>
+</section>
+
+        </main>
+    </div>
+
+
+    <!-- ================= SEAT OF NATURE FULL CASE STUDY VIEW ================= -->
+    <div id="embodimentView" class="hidden case-study-view w-full min-h-screen pb-20">
+        
+        <!-- Header -->
+        <header class="w-full max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
+            <button onclick="showHomeView()" class="text-gray-300 hover:text-white text-2xl p-2 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2 group" title="Return to Portfolio">
+                <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+            </button>
+
+            <h1 class="care-serif-title text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-widest text-center uppercase">
+                SEAT OF NATURE
+            </h1>
+
+            <div class="w-10"></div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <!-- TOP SECTION: Chair Prototype Photo + Key Learnings -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-4">
+                
+                <div class="flex justify-center md:justify-start">
+                    <div onclick="openEmbodimentLink()" class="w-full max-w-[340px] aspect-[4/5] bg-[#ece2d0] rounded-3xl p-3 flex flex-col items-center justify-center shadow-2xl relative overflow-hidden border border-amber-200/20 group cursor-pointer hover:scale-[1.03] transition-all duration-300 ring-4 ring-transparent hover:ring-amber-400/60" title="Click to open Seat of Nature Document">
+                        
+                        <!-- Click Hint Badge (Top Right) -->
+                        <div class="absolute top-3 right-3 z-10 bg-amber-800/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5 opacity-90 group-hover:opacity-100 group-hover:bg-amber-600 transition-all">
+                            <span>Click to Open Document</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </div>
+
+                        <img 
+                            src="16.jpg"
+                            alt="Embodiment Design - Seat of Nature"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        >
+
+                        <!-- Bottom Click Notification Banner -->
+                        <div class="absolute bottom-2 inset-x-4 z-10 bg-amber-950/20 group-hover:bg-amber-950/90 group-hover:text-amber-200 text-amber-900 text-[10px] font-semibold py-1 rounded-lg text-center transition-all duration-300 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-hand-pointer text-[10px] animate-bounce"></i>
+                            <span>Click image to view document</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-center space-y-6 text-cyan-50">
+                    <div class="flex items-center justify-between gap-4">
+                        <h2 class="text-xl sm:text-2xl font-bold tracking-[0.25em] text-cyan-200/90 font-mono select-none">
+                            KEY LEARNINGS
+                        </h2>
+
+                        <div id="embodimentToggle" onclick="toggleKeyLearnings('embodimentToggle', 'embodimentKeyLearningsList')" class="toggle-switch-bg group relative flex-shrink-0" title="Click to toggle Key Learnings">
+                            <div class="toggle-switch-circle"></div>
+                        </div>
+                    </div>
+
+                    <ul id="embodimentKeyLearningsList" class="key-learnings-list space-y-6">
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-lg sm:text-xl tracking-wider text-white">
+                                MATERIAL EXPLORATION
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-lg sm:text-xl tracking-wider text-white">
+                                PROPORTIONATE MODIFICATIONS
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-lg sm:text-xl tracking-wider text-white">
+                                TRUST THE PROCESS
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-8">
+                <div class="care-body-text text-slate-200 text-xs sm:text-sm leading-relaxed space-y-4">
+                    <p>
+                        Embodiment Design was all about incarnation of the core properties, shapes and textures of a natural object, where I happened to choose Jungle Pod.
+                    </p>
+                    <p>
+                        While exploring this natural object, material and form exploration was necessary too. When the form, shape and texture were being inculcated, I made 'Sede Natura'- Seat of Nature.
+                    </p>
+                    <p>
+                        This was my final outcome, but through that I had to work on several ideations- where I tried making a Soup Bowl and a Trinket Bowl.
+                    </p>
+                </div>
+
+                <div class="flex justify-center">
+                    <div class="w-full max-w-[280px] bg-stone-100 rounded-2xl p-4 shadow-xl border border-stone-300 flex items-center justify-center overflow-hidden">
+                        <img class="w-full h-auto object-cover rounded-lg" src="Sketch.png" alt="Sketch of Jungle Pod">
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-4">
+                <div class="flex justify-center order-2 md:order-1">
+                    <div class="w-full max-w-[280px] bg-stone-900 rounded-3xl p-3 shadow-xl border border-stone-800">
+                        <div class="w-full aspect-square rounded-2xl bg-stone-800 relative overflow-hidden flex items-center justify-center">
+                            <img class="w-full h-full object-cover rounded-xl" src="11.jpg" alt="Model Exploration">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="care-body-text text-slate-200 text-xs sm:text-sm leading-relaxed order-1 md:order-2">
+                    <p>
+                        Thenafter, while I was closely observing the shape and structure of the Jungle Pod, it stroked my mind of why not try making a chair which is inspired with jungle pod's shape and moreover texture and color.
+                    </p>
+                    <p class="mt-4">
+                        Hence, when explored well, I shaped my idea and gave time with iterations and here's the outcome!
+                    </p>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+
+    <!-- ================= ROYAL PORTUGAL KITCHEN (VR) CASE STUDY VIEW ================= -->
+    <div id="vrView" class="hidden case-study-view w-full min-h-screen pb-20">
+        <!-- Header -->
+        <header class="w-full max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
+            <button onclick="showHomeView()" class="text-gray-300 hover:text-white text-2xl p-2 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2 group" title="Return to Portfolio">
+                <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+            </button>
+
+            <h1 class="care-serif-title text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-widest text-center uppercase">
+                ROYAL PORTUGAL KITCHEN
+            </h1>
+
+            <div class="w-10"></div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <!-- TOP SECTION: Stacked Viewport Screenshots + Key Learnings -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-2">
+                
+                <!-- Left Column: Two Stacked VR Software Viewport Renders -->
+                <div class="flex flex-col gap-5 justify-center">
+                    
+                    <!-- Viewport 1 (Blender Kitchen View with Arched Windows & Alcove) -->
+                    <div class="viewport-screen-frame relative group shadow-2xl">
+                        <div class="bg-slate-900 px-3 py-1.5 flex items-center justify-between border-b border-slate-800 text-[10px] text-slate-400 font-mono">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-cube text-amber-500"></i> Blender 3.4 - Kitchen_View_01.blend</span>
+                            <span class="flex gap-1.5"><span class="w-2 h-2 rounded-full bg-red-500/80"></span><span class="w-2 h-2 rounded-full bg-yellow-500/80"></span><span class="w-2 h-2 rounded-full bg-green-500/80"></span></span>
+                        </div>
+                        
+                        <div class="w-full aspect-[16/10] bg-slate-950 relative overflow-hidden flex items-center justify-center">
+                            <img class="w-full h-full object-cover" src="VR interface pic 1.jpeg" alt="VR Blender Interface 1">
+
+                            <div class="absolute bottom-2 left-2 text-[9px] text-slate-300 font-mono bg-black/60 px-2 py-0.5 rounded">
+                                Camera View | Perspective | Rendered
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Viewport 2 (Unity / Blender Archway View) -->
+                    <div class="viewport-screen-frame relative group shadow-2xl">
+                        <div class="bg-slate-900 px-3 py-1.5 flex items-center justify-between border-b border-slate-800 text-[10px] text-slate-400 font-mono">
+                            <span class="flex items-center gap-1.5"><i class="fa-brands fa-unity text-cyan-400"></i> Unity 2022.3 LTS - Royal_Kitchen_VR</span>
+                            <span class="flex gap-1.5"><span class="w-2 h-2 rounded-full bg-red-500/80"></span><span class="w-2 h-2 rounded-full bg-yellow-500/80"></span><span class="w-2 h-2 rounded-full bg-green-500/80"></span></span>
+                        </div>
+
+                        <div class="w-full aspect-[16/10] bg-slate-950 relative overflow-hidden flex items-center justify-center">
+                            <img class="w-full h-full object-cover" src="VR Interface 2.jpeg" alt="VR Blender Interface 2">
+
+                            <div class="absolute bottom-2 left-2 text-[9px] text-slate-300 font-mono bg-black/60 px-2 py-0.5 rounded">
+                                Game View | OpenXR Target
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: KEY LEARNINGS TOGGLE SECTION -->
+                <div class="flex flex-col justify-center space-y-6 text-cyan-50">
+                    <div class="flex items-center justify-between gap-4">
+                        <h2 class="text-xl sm:text-2xl font-bold tracking-[0.25em] text-cyan-200/90 font-mono select-none">
+                            KEY LEARNINGS
+                        </h2>
+
+                        <!-- Toggle Switch Active by Default as shown in screenshot -->
+                        <div id="vrToggle" onclick="toggleKeyLearnings('vrToggle', 'vrKeyLearningsList')" class="toggle-switch-bg active group relative flex-shrink-0" title="Click to toggle Key Learnings">
+                            <div class="toggle-switch-circle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Bullet Points Collapsible - Visible by default -->
+                    <ul id="vrKeyLearningsList" class="key-learnings-list show space-y-5">
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-sm sm:text-base tracking-wider text-white">
+                                RESEARCH AND FINDING SPECIFICATIONS
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-sm sm:text-base tracking-wider text-white">
+                                EXPLORING SOFTWARE TOOLS FOR THE VERY FIRST TIME
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-sm sm:text-base tracking-wider text-white">
+                                SCALING TECHNICALITIES
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-300 text-lg leading-none mt-1">•</span>
+                            <span class="care-serif-title font-extrabold text-sm sm:text-base tracking-wider text-white">
+                                TO REPLICATE THE ELEMENTS BY REFINING CONSTANTLY, FOR BETTER EXPERIENCE
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- Main Text Description Section -->
+            <section class="care-body-text text-center space-y-6 max-w-3xl mx-auto pt-8 text-slate-200 text-xs sm:text-sm leading-relaxed px-2">
+                <p>
+                    This is a built VIRTUAL REALITY experience that depicts how cooking in a 15th Century Portuguese royal kitchen looked like. My team and I worked on the environment , understanding the scale and layouts, VR setup , Interactions, food interactions, audio visuals in the software called Blender and Unity hub.
+                </p>
+
+                <p>
+                    We chose to build this in VR as a medium for very specific reasons- Procedural knowledge, spatial and material literacy, making absence legible and embodied empathy.
+                </p>
+            </section>
+
+            <!-- Personal Contributions Section -->
+            <section class="pt-6 text-center space-y-6 max-w-3xl mx-auto">
+                <div onclick="openContributionsGallery()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openContributionsGallery(); }" class="inline-flex flex-col items-center cursor-pointer group p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-amber-950/50 via-slate-900 to-indigo-950/50 border border-amber-500/40 hover:border-amber-400 hover:shadow-[0_0_35px_rgba(245,158,11,0.3)] transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-amber-400 text-xl group-hover:scale-110 transition-transform"></i>
+                        <h2 class="care-serif-title text-xl sm:text-2xl font-bold text-white tracking-wider group-hover:text-amber-200 transition-colors">
+                            A walk through into my personal contributions
+                        </h2>
+                    </div>
+                    <span class="mt-3 text-xs font-mono text-amber-300/90 flex items-center gap-2 bg-amber-950/60 px-3.5 py-1.5 rounded-full border border-amber-500/30 group-hover:bg-amber-900/80 transition-colors shadow-inner">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] animate-pulse"></i>
+                        Click to explore Blender process & 3D workflow slides
+                    </span>
+                </div>
+
+                <div class="care-body-text text-slate-200 text-xs sm:text-sm leading-relaxed space-y-5 px-2">
+                    <p>
+                        My personal contributions in this project were building elements in the blender software and the research where I had to cut down to the niche base and search for specifications of place, material, time, process the mindset and most importantly the practice.
+                    </p>
+                    <p>
+                        This made me used to with all elements that were built with regard to its shape, size, structure and the correct texture which can make it look real.
+                    </p>
+                    <p>
+                        This process images depict the various scalability of how an element is scaled and placed on a specific point, angle and manner.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Full-Screen ABOUT ME Page -->
+    <div id="about-page-view" class="fixed inset-0 z-50 bg-[#0c101c] hidden overflow-y-auto min-h-screen text-gray-200">
+        <div class="min-h-screen w-full flex items-center justify-center p-6 md:p-12">
+            <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-12">
+                
+                <!-- Left Title & Profile Image Container Section -->
+                <div class="lg:col-span-5 flex flex-col items-start gap-6">
+                    <div class="flex items-center gap-6">
+                        <button onclick="closeAboutPage()" class="w-12 h-12 rounded-full border border-gray-700/80 hover:border-purple-500 hover:bg-purple-950/30 flex items-center justify-center text-white text-xl transition-all shadow-md focus:outline-none group">
+                            <i class="fas font-thin fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                        </button>
+                        <h1 class="text-2xl md:text-3xl font-extrabold tracking-widest text-white uppercase">
+                            ABOUT ME
+                        </h1>
+                    </div>
+
+                    <!-- PROFILE IMAGE FRAME -->
+                    <div class="relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden border-2 border-purple-500/30 bg-gradient-to-b from-purple-900/20 to-slate-900 shadow-2xl group hover:border-purple-400 transition-all duration-300">
+                        <img 
+                            id="aboutProfileImage" 
+                            src="Profile pic.jpeg" 
+                            alt="Pushti Gandhi Profile Photo" 
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x750/1f1a2e/ffffff?text=Pushti+Gandhi';"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0c101c] via-transparent to-transparent opacity-60"></div>
+                        
+                        <!-- Profile Card Badge -->
+                        <div class="absolute bottom-4 left-4 right-4 bg-slate-900/85 backdrop-blur-md border border-purple-500/30 rounded-2xl p-3 text-center shadow-lg">
+                            <p class="text-xs font-bold text-white tracking-widest uppercase">Pushti Gandhi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Bio Content Section -->
+                <div class="lg:col-span-7 space-y-6 text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
+                    <p>
+                        This is Pushti, I am an Interaction design student. I am a very observant person. I am perusing interaction design with mainly two reasons- this particular discipline is a versatile field to be in, it involves a lot of tools, software and medium exploration.
+                    </p>
+                    <p>
+                        And since I was a mass communication student in my higher education years, this field compliments it the best. It teaches me ways of how to interact, how to connect to new people and mediums and moreover it evolves me as a person as I am very good at grasping qualities and implement them. I empathize with people, problems and keep an understanding to look at it with a different point of view. Human psychology fascinates me a lot and I really enjoy listening to people, talk about their lives, problems, struggles. As an aspiring designer, the quality I have learned and what has always stayed along is how we can connect to different situations , how we identify a particular problem and analyze it to get a solution.
+                    </p>
+                    <p>
+                        So here is a journey where I have shared my work and experience building them. Happy Watching!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive VR Personal Contributions Slides Modal -->
+    <div id="contributionsGalleryModal" class="fixed inset-0 z-50 bg-[#0b1016]/95 backdrop-blur-md hidden flex flex-col justify-between p-4 sm:p-8 select-none transition-opacity duration-300">
+        <!-- Header Controls (Close X Button & Title) -->
+        <div class="w-full max-w-7xl mx-auto flex items-center justify-between z-10 pt-2">
+            <div class="flex items-center gap-3">
+                <span class="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span>
+                <h3 class="text-xs sm:text-sm font-mono tracking-widest text-amber-200/90 uppercase">
+                    Personal Contributions Process Gallery
+                </h3>
+            </div>
+            
+            <button onclick="closeContributionsGallery()" class="text-gray-300 hover:text-white text-2xl sm:text-3xl font-light w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" title="Close Slides (Esc)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Main Slide Viewport Container -->
+        <div class="w-full max-w-6xl mx-auto my-auto relative flex items-center justify-center px-4 sm:px-12 py-6">
+            
+            <!-- Left Arrow Button -->
+            <button onclick="prevContributionsSlide()" class="absolute left-0 sm:left-2 z-20 text-gray-300 hover:text-white text-2xl sm:text-3xl p-3 hover:scale-125 transition-all focus:outline-none" title="Previous Slide (Left Arrow)">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Cards Slide Render Container -->
+            <div id="contributionsSlideContent" class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center justify-center transition-all duration-300">
+                <!-- Dynamically populated via JS -->
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button onclick="nextContributionsSlide()" class="absolute right-0 sm:right-2 z-20 text-gray-300 hover:text-white text-2xl sm:text-3xl p-3 hover:scale-125 transition-all focus:outline-none" title="Next Slide (Right Arrow)">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+        <!-- Footer Dots & Slide Counter -->
+        <div class="w-full max-w-7xl mx-auto flex flex-col items-center gap-3 pb-2 z-10">
+            <div id="slideDotsContainer" class="flex items-center gap-2">
+                <!-- Dots populated via JS -->
+            </div>
+            <span id="slideCounterText" class="text-[11px] font-mono text-slate-400">
+                Slide 1 of 4
+            </span>
+        </div>
+    </div>
+
+    <!-- Zoom Lightbox Modal for Gallery Images -->
+    <div id="imageZoomModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl hidden flex flex-col items-center justify-center p-4" onclick="closeImageZoom()">
+        <button onclick="closeImageZoom()" class="absolute top-6 right-6 text-white text-3xl hover:text-amber-400 transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="imageZoomContent" class="max-w-4xl w-full max-h-[80vh] flex flex-col items-center justify-center p-4 bg-slate-900 rounded-3xl border border-slate-700 shadow-2xl" onclick="event.stopPropagation()">
+            <!-- Populated dynamically when clicking an image card -->
+        </div>
+    </div>
+
+    <!-- Info / Contact Modal -->
+    <div id="infoModal" class="fixed inset-0 z-50 modal-overlay bg-black/75 flex items-center justify-center p-4 hidden">
+        <div class="bg-[#13131a] border border-gray-800 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeInfoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="infoModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        let currentContribSlide = 0;
+
+        /* =====================================================
+           VR PERSONAL CONTRIBUTIONS PROCESS SLIDES DATA
+           Replace image paths below (e.g., vr_slide1_1.jpg) with your exact filenames.
+           ===================================================== */
+        const contribSlidesData = [
+            // SLIDE 1
+            [
+                {
+                    title: "Kitchen Layout and Arched Vault",
+                    
+                    imgSrc: "Interface 1.png"
+                },
+                {
+                    title: "⁠Racks and storage",
+                    
+                    imgSrc: "Interface 2.png"
+                },
+                {
+                    title: "Side corridor and Workstation",
+                    
+                    imgSrc: "Interface 3.png"
+                }
+            ],
+            // SLIDE 2
+            [
+                {
+                    title: "Clay ovens",
+                    
+                    imgSrc: "Interface 4.png"
+                },
+                {
+                    title: "Arched Perspective",
+                    
+                    imgSrc: "Interface 5.png"
+                },
+                {
+                    title: "Wall of Storage Cupboard",
+                    
+                    imgSrc: "Interface 6.png"
+                }
+            ],
+            // SLIDE 3
+            [
+                {
+                    title: "Architectural Side view",
+                    
+                    imgSrc: "Interface 7.png"
+                },
+                {
+                    title: "⁠Architectural Front view",
+                    
+                    imgSrc: "Interface 8.png"
+                },
+                {
+                    title: "⁠Fish Scaler",
+                    
+                    imgSrc: "Interface 9.png"
+                }
+            ],
+            // SLIDE 4
+            [
+                {
+                    title: "Bamboo and Wooden Bucket",
+                    
+                    imgSrc: "Interface 10.png"
+                },
+                {
+                    title: "Clay pot",
+                    
+                    imgSrc: "Interface 11.png"
+                },
+                {
+                    title: "Pounder and A Pestle",
+                    
+                    imgSrc: "Interface 12.png"
+                }
+            ]
+        ];
+
+        /* =====================================================
+           VR CONTRIBUTIONS GALLERY
+           ===================================================== */
+
+        function openContributionsGallery() {
+            const modal = document.getElementById('contributionsGalleryModal');
+            const container = document.getElementById('contributionsSlideContent');
+
+            if (!modal || !container) return;
+
+            currentContribSlide = 0;
+            renderContribSlide();
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContributionsGallery() {
+            const modal = document.getElementById('contributionsGalleryModal');
+
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+
+            document.body.style.overflow = '';
+            closeImageZoom();
+        }
+
+        function nextContributionsSlide() {
+            if (!Array.isArray(contribSlidesData) || contribSlidesData.length === 0) return;
+            currentContribSlide = (currentContribSlide + 1) % contribSlidesData.length;
+            renderContribSlide();
+        }
+
+        function prevContributionsSlide() {
+            if (!Array.isArray(contribSlidesData) || contribSlidesData.length === 0) return;
+            currentContribSlide = (currentContribSlide - 1 + contribSlidesData.length) % contribSlidesData.length;
+            renderContribSlide();
+        }
+
+        function setContribSlide(index) {
+            if (!Array.isArray(contribSlidesData) || contribSlidesData.length === 0) return;
+            if (index < 0 || index >= contribSlidesData.length) return;
+
+            currentContribSlide = index;
+            renderContribSlide();
+        }
+
+        function renderContribSlide() {
+            const container = document.getElementById('contributionsSlideContent');
+            const dotsContainer = document.getElementById('slideDotsContainer');
+            const counterText = document.getElementById('slideCounterText');
+
+            if (!container) return;
+
+            if (!Array.isArray(contribSlidesData) || contribSlidesData.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <p class="text-red-400 text-sm">No gallery slides found.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const cards = contribSlidesData[currentContribSlide];
+
+            if (!Array.isArray(cards)) return;
+
+            container.innerHTML = cards.map((card, idx) => `
+                <div
+                    onclick="openImageZoom(${currentContribSlide}, ${idx})"
+                    role="button"
+                    tabindex="0"
+                    onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openImageZoom(${currentContribSlide}, ${idx}); }"
+                    class="flex flex-col bg-[#0f1720] border border-slate-700/60 rounded-[2rem] overflow-hidden shadow-2xl hover:border-amber-400/80 hover:scale-[1.02] transition-all duration-300 cursor-pointer group"
+                >
+                    <div class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-cube text-amber-500"></i>
+                            Blender Process
+                        </span>
+                        <span class="flex items-center gap-1 text-amber-400 text-[10px]">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            Zoom
+                        </span>
+                    </div>
+
+                    <div class="w-full aspect-[16/10] bg-slate-950 relative overflow-hidden flex items-center justify-center p-1 group-hover:bg-slate-900 transition-colors">
+                        <img 
+                            src="${card.imgSrc}" 
+                            alt="${card.title}" 
+                            class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Process+Image';"
+                        >
+                    </div>
+
+                    <div class="p-4 bg-[#111923] border-t border-slate-800 flex flex-col gap-1">
+                        <h4 class="text-xs sm:text-sm font-bold text-amber-200 tracking-wide font-sans group-hover:text-amber-300">
+                            ${card.title}
+                        </h4>
+                        <p class="text-[10px] sm:text-xs text-slate-500 leading-relaxed">
+                            ${card.desc || ''}
+                        </p>
+                    </div>
+                </div>
+            `).join('');
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = contribSlidesData.map((_, idx) => `
+                    <button
+                        onclick="setContribSlide(${idx})"
+                        class="h-2.5 rounded-full transition-all duration-300 ${idx === currentContribSlide ? 'bg-amber-400 w-8' : 'bg-slate-600 hover:bg-slate-400 w-2.5'}"
+                        title="Go to Slide ${idx + 1}"
+                        aria-label="Go to Slide ${idx + 1}"
+                    ></button>
+                `).join('');
+            }
+
+            if (counterText) {
+                counterText.innerText = `Slide ${currentContribSlide + 1} of ${contribSlidesData.length}`;
+            }
+        }
+
+        function openImageZoom(slideIdx, cardIdx) {
+            if (!contribSlidesData[slideIdx] || !contribSlidesData[slideIdx][cardIdx]) return;
+
+            const card = contribSlidesData[slideIdx][cardIdx];
+            const content = document.getElementById('imageZoomContent');
+            const modal = document.getElementById('imageZoomModal');
+
+            if (!content || !modal) return;
+
+            content.innerHTML = `
+                <div class="w-full max-h-[60vh] bg-slate-950 rounded-2xl overflow-hidden p-2 flex items-center justify-center">
+                    <img 
+                        src="${card.imgSrc}" 
+                        alt="${card.title}" 
+                        class="max-w-full max-h-[58vh] object-contain rounded-lg"
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e293b/ffffff?text=Process+Image';"
+                    >
+                </div>
+                <div class="mt-4 text-center">
+                    <h3 class="text-lg font-bold text-amber-200">${card.title}</h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto">${card.desc || ''}</p>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeImageZoom() {
+            const modal = document.getElementById('imageZoomModal');
+
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            const gallery = document.getElementById('contributionsGalleryModal');
+            const zoom = document.getElementById('imageZoomModal');
+
+            if (zoom && !zoom.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeImageZoom();
+                return;
+            }
+
+            if (gallery && !gallery.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') nextContributionsSlide();
+                if (e.key === 'ArrowLeft') prevContributionsSlide();
+                if (e.key === 'Escape') closeContributionsGallery();
+            }
+        });
+
+        function hideAllViews() {
+            const views = ['homeView', 'careConnectView', 'embodimentView', 'vrView'];
+            views.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+        }
+
+        function showHomeView() {
+            hideAllViews();
+            document.getElementById('homeView')?.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showCareConnectView() {
+            hideAllViews();
+            document.getElementById('careConnectView')?.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showEmbodimentView() {
+            hideAllViews();
+            document.getElementById('embodimentView')?.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showVrView() {
+            hideAllViews();
+            document.getElementById('vrView')?.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openAboutPage() {
+            document.getElementById('about-page-view')?.classList.remove('hidden');
+        }
+
+        function closeAboutPage() {
+            document.getElementById('about-page-view')?.classList.add('hidden');
+        }
+
+        function openCareConnectLink() {
+            showCareConnectPopup();
+            window.open('https://ounce-squid-04000269.figma.site/', '_blank');
+        }
+
+        function openEmbodimentLink() {
+            showEmbodimentPopup();
+            window.open('https://acrobat.adobe.com/id/urn:aaid:sc:AP:ad9a27ee-a81e-47e8-bb36-9d2fd3517e15', '_blank');
+        }
+
+        function showEmbodimentPopup() {
+            const container = document.getElementById('infoModalContent');
+            if (!container) return;
+            container.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 mx-auto flex items-center justify-center text-xl mb-3 border border-amber-400/40">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Opening Seat of Nature Document</h3>
+                    <p class="text-sm text-gray-300 mb-4">
+                        Opening Adobe Acrobat document: <br>
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:ad9a27ee-a81e-47e8-bb36-9d2fd3517e15" target="_blank" class="text-amber-400 underline hover:text-amber-300 font-mono text-xs break-all mt-2 inline-block">https://acrobat.adobe.com/id/urn:aaid:sc:AP:ad9a27ee-a81e-47e8-bb36-9d2fd3517e15</a>
+                    </p>
+                    <button onclick="closeInfoModal()" class="px-5 py-2 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-semibold transition-colors">
+                        Close Notice
+                    </button>
+                </div>
+            `;
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        function showCareConnectPopup() {
+            const container = document.getElementById('infoModalContent');
+            if (!container) return;
+            container.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 mx-auto flex items-center justify-center text-xl mb-3 border border-cyan-400/40">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Opening Care Connect</h3>
+                    <p class="text-sm text-gray-300 mb-4">
+                        Opening live prototype website: <br>
+                        <a href="https://ounce-squid-04000269.figma.site/" target="_blank" class="text-cyan-400 underline hover:text-cyan-300 font-mono text-xs break-all mt-2 inline-block">https://ounce-squid-04000269.figma.site/</a>
+                    </p>
+                    <button onclick="closeInfoModal()" class="px-5 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl text-xs font-semibold transition-colors">
+                        Close Notice
+                    </button>
+                </div>
+            `;
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        // Key Learnings Toggle Switch Handler
+        function toggleKeyLearnings(toggleId, listId) {
+            const toggle = document.getElementById(toggleId);
+            const list = document.getElementById(listId);
+            if (!toggle || !list) return;
+            
+            toggle.classList.toggle('active');
+            list.classList.toggle('show');
+        }
+
+        function openAboutModal() {
+            const container = document.getElementById('infoModalContent');
+            if (!container) return;
+            container.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-600 to-teal-400 mx-auto flex items-center justify-center font-bold text-2xl text-white mb-4 shadow-lg">
+                        PG
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Pushti Gandhi</h3>
+                    <p class="text-sm text-purple-400 mt-1 font-medium">Interaction & Embodiment Designer</p>
+                    <p class="text-gray-300 text-sm mt-4 leading-relaxed text-left">
+                        Passionate designer crafting intuitive digital interactions, physical embodiment design, and immersive spatial experiences.
+                    </p>
+                </div>
+            `;
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        function openContactModal() {
+            const container = document.getElementById('infoModalContent');
+            if (!container) return;
+            container.innerHTML = `
+                <div class="py-2">
+                    <h3 class="text-xl font-bold text-white mb-2">Get In Touch</h3>
+                    <p class="text-sm text-gray-400 mb-6">Have a project or opportunity in mind? Feel free to reach out!</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-gray-300 bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                            <i class="fa-solid fa-envelope text-purple-400"></i>
+                            <span class="text-sm">pushti.gandhi@example.com</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300 bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                            <i class="fa-brands fa-linkedin text-purple-400"></i>
+                            <span class="text-sm">linkedin.com/in/pushtigandhi</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        function closeInfoModal() {
+            const modal = document.getElementById('infoModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // Keyboard escape handler
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeInfoModal();
+                closeAboutPage();
+            }
+        });
+
+        // Overlay backdrop click handler
+        window.onclick = function(event) {
+            const iModal = document.getElementById('infoModal');
+            if (event.target === iModal) closeInfoModal();
+        };
+    </script>
+</body>
+</html>
